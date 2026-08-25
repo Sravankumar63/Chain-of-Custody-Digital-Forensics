@@ -1,0 +1,11 @@
+ExifTool Version Number : 13.55
+File Name               : photo.png
+File Type               : PNG
+MIME Type               : image/png
+File Size               : approximately 1616 KB
+Image Width             : 1254
+Image Height            : 1254
+Software                : gpt-image
+
+Tool: ExifTool 13.55
+Examination workstation: Kali Linux (QEMU)
