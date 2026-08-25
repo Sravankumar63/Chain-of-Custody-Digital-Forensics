@@ -2,23 +2,25 @@
 
 ## Implemented Architecture
 
+The following diagram shows the actual implemented workflow: Windows is the evidence source, Kali Linux running in QEMU is the forensic workstation, SCP is used for acquisition, SHA-256 is used for integrity verification, and ExifTool is used for metadata examination.
+
 ```mermaid
-flowchart TD
-    A[Windows Host<br/>Evidence Source] --> B[OpenSSH Server<br/>TCP 22]
+flowchart LR
+    A[Windows Host: Evidence Source] --> B[OpenSSH Server: TCP 22]
     B --> C[SSH Authentication]
     C --> D[SCP Evidence Acquisition]
-    D --> E[Kali Linux<br/>QEMU Forensic Workstation]
-    E --> F[Examination Copy<br/>photo.png]
+    D --> E[Kali Linux: QEMU Workstation]
+    E --> F[Examination Copy: photo.png]
     F --> G[SHA-256 Hash]
     F --> H[ExifTool 13.55]
-    G --> I[Compare Windows Reference Hash<br/>with Kali Hash]
-    H --> J[EXIF / File Metadata Findings]
-    I --> K{Hash Match?}
+    G --> I[Compare Reference Hash]
+    H --> J[EXIF and File Metadata]
+    I --> K{Hash Match}
     K -->|YES| L[Integrity Verified]
-    K -->|NO| M[Integrity Failure / Investigate]
-    J --> N[Chain-of-Custody Report]
-    L --> N
+    K -->|NO| M[Investigate Integrity Failure]
+    L --> N[Chain-of-Custody Report]
     M --> N
+    J --> N
     N --> O[Final Evidence Finding]
 ```
 
@@ -29,8 +31,8 @@ flowchart TD
 3. **Network validation** – TCP port 22 was tested from Kali; the working Windows address was `192.168.0.102`.
 4. **SSH connection** – Kali connected to the Windows account using SSH.
 5. **Evidence acquisition** – The evidence file was copied from Windows to Kali using SCP.
-6. **Integrity baseline** – SHA-256 was calculated for the evidence on Windows.
-7. **Forensic copy verification** – SHA-256 was calculated again for the Kali examination copy.
+6. **Integrity baseline** – SHA-256 was calculated for the evidence on Windows using `certutil`.
+7. **Forensic copy verification** – SHA-256 was calculated again for the Kali examination copy using `sha256sum`.
 8. **Metadata examination** – ExifTool 13.55 was used to inspect file and image metadata.
 9. **Finding** – The SHA-256 values matched, so the examination copy was recorded as **VERIFIED – HASH MATCHED**.
 10. **Documentation** – Hash, metadata, evidence path, findings, and processing time were recorded in the chain-of-custody report.
