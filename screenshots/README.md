@@ -1,6 +1,6 @@
 # Implementation Screenshots
 
-The implementation screenshots are maintained from the project evidence-documentation file supplied during development.
+This folder documents the implementation screenshot sequence used during the project.
 
 ## Screenshot Sequence
 
@@ -19,6 +19,4 @@ The implementation screenshots are maintained from the project evidence-document
 
 ## Evidence Handling Note
 
-The screenshots document the process but the original evidence file is intentionally not published in this public repository.
-
-The source documentation contains 37 implementation screenshots grouped under Windows and Kali sections. fileciteturn10file0L29-L32
+The original `photo.png` evidence file is intentionally not published in this public repository.
