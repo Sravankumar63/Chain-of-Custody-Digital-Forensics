@@ -1,0 +1,8 @@
+Evidence: photo.png
+Reference SHA-256 (Windows certutil):
+2ef665d31b00da877382e8624149ae7fc4cd8f8c907c5f6e3de8211f5094bda3
+
+Examination-copy SHA-256 (Kali sha256sum):
+2ef665d31b00da877382e8624149ae7fc4cd8f8c907c5f6e3de8211f5094bda3
+
+Result: VERIFIED - HASH MATCHED
